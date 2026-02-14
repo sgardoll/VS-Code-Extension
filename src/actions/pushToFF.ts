@@ -36,6 +36,9 @@ function customFilePath(fileMapKey: string, fileInfo: FileInfo): string {
     if (fileInfo.type == 'D') {
         return 'pubspec.yaml';
     }
+    if (fileInfo.type == 'O') {
+        return path.join('lib', 'custom_code', fileMapKey);
+    }
     throw Error(`Invalid custom code filemap entry ${fileMapKey}`);
 }
 
@@ -60,7 +63,7 @@ export async function pushToFF(apiClient: FlutterFlowApiClient, projectRoot: str
         projectId: projectId,
         uuid: requestId,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        fileMapContents: JSON.stringify(Object.fromEntries(Array.from(fileMap.entries()).filter(([_, fileInfo]: [string, FileInfo]) => fileInfo.type !== CodeType.DEPENDENCIES && fileInfo.type !== CodeType.OTHER))),
+        fileMapContents: JSON.stringify(Object.fromEntries(Array.from(fileMap.entries()).filter(([_, fileInfo]: [string, FileInfo]) => fileInfo.type !== CodeType.DEPENDENCIES))),
         functionChangesMap: functionChangesMapString
     };
     let fileErrors: Map<string, FileWarning[]> = new Map();
