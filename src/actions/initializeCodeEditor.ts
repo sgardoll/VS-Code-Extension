@@ -102,8 +102,14 @@ export async function initializeCodeEditorWithVscode(): Promise<{ metadata: Flut
         if (!path.isAbsolute(flutterSdkPath)) {
             flutterSdkPath = path.join(workspaceFolder?.uri.fsPath || "", flutterSdkPath);
         }
-        // look at version file in flutter sdk path
         const versionFilePath = path.join(flutterSdkPath, "version");
+        if (!fs.existsSync(versionFilePath)) {
+            console.log(`Flutter version file not found at ${versionFilePath}. Treating as no Flutter SDK installed.`);
+            return {
+                flutterVersion: "",
+                defaultSdkPath: flutterSdkPath
+            };
+        }
         const versionFileContents = fs.readFileSync(versionFilePath, "utf8");
         const currentFlutterVersion = versionFileContents.trim();
         return {

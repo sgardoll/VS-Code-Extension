@@ -29,3 +29,26 @@ out/
 # dart generated analysis files
 packages/ffanalyzer/dart/.dart_tool/
 packages/ffanalyzer/dart/out/
+/.planning
+/.serena
+/.vscode
+lib/custom_code/actions/index.dart
+lib/custom_code/widgets/index.dart
+AGENTS.md
+src/actions/AGENTS.md
+src/api/AGENTS.md
+src/ffState/AGENTS.md
+src/fileUtils/AGENTS.md
+flutterflow-custom-code-editor-1.2.8.vsix
+*.vsix
+src/fileUtils/dart/.dart_tool/package_graph.json
+src/fileUtils/dart/.dart_tool/package_config.json
+src/fileUtils/dart/pubspec.lock
+package-lock.json
+package-lock.json
+src/fileUtils/dart/pubspec.lock
+src/fileUtils/dart/.dart_tool/package_config.json
+package-lock.json
+package-lock.json
+src/fileUtils/dart/pubspec.lock
+src/fileUtils/dart/.dart_tool/package_config.json
